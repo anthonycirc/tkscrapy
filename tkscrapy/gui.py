@@ -2,6 +2,7 @@
 import _tkinter
 import os
 import subprocess
+import sys
 import tkinter
 from threading import Thread
 
@@ -201,7 +202,14 @@ class App(tkinter.Tk):
         :return:
         """
         extensions = ("json", "csv", "xml")
-        dir_path = os.path.dirname(os.path.abspath(__file__))
+
+        # Fix datafile for App executable
+        if getattr(sys, 'frozen', False):
+            # frozen
+            dir_path = os.path.dirname(sys.executable)
+        else:
+            # unfrozen
+            dir_path = os.path.dirname(os.path.abspath(__file__))
 
         for ext in extensions:
             filename_ext = os.path.join(dir_path, f"{filename}.{ext}")

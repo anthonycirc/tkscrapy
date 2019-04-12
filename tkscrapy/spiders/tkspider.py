@@ -1,5 +1,4 @@
 # coding:utf-8
-import tkinter
 import scrapy
 
 
@@ -50,9 +49,4 @@ class TkSpider(scrapy.Spider):
             entries_dict = (dict(entry.split("|") for entry in entries.split("\n") if entry))
             return entries_dict
         except ValueError:
-            tkinter.messagebox.showerror("Erreur",
-                                         "le format est incorrect \n "
-                                         "ex: \"nom_de_la_colonne\" | "
-                                         "\"nom_du_selecteur.css\"")
-        except:
             raise

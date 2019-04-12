@@ -137,8 +137,9 @@ class App(tkinter.Tk):
         Check the result and display it in Text entry
         :return:
         """
-        file = os.path.join(os.path.dirname(os.path.abspath(__file__)), f"tkspider.{self.export_var.get()}")
-        # check if file existe and if not empty
+        # Fix datafile for App executable cx_freeze
+        file = os.path.join(App._check_path_file_frozen(), f"tkspider.{self.export_var.get()}")
+        # check if file exist and if not empty
         if os.path.isfile(file) and os.stat(file).st_size != 0:
 
             try:
@@ -178,6 +179,22 @@ class App(tkinter.Tk):
             btn_save.pack(side="top")
         self.btn_save_actived = False
 
+    @staticmethod
+    def _check_path_file_frozen():
+        """
+        Check if path file is in frozen exectuble
+        :param file: str file path
+        :return:
+        """
+        # Fix datafile for App executable cx_freeze
+        if getattr(sys, 'frozen', False):
+            # frozen
+            path_file = os.path.dirname(sys.executable)
+        else:
+            # unfrozen
+            path_file = os.path.dirname(os.path.abspath(__file__))
+        return path_file
+
     def _save_file(self):
         """
         Save file and copy the content of tkspider files
@@ -190,7 +207,8 @@ class App(tkinter.Tk):
                                             ("All files", "*.*")))
 
         # Copy spider file content in user choices file
-        spider_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), f"tkspider.{self.export_var.get()}")
+        # Fix datafile for App executable cx_freeze
+        spider_file = os.path.join(App._check_path_file_frozen(), f"tkspider.{self.export_var.get()}")
         copyfile(spider_file, file.name)
         os.remove(spider_file)  # remove spider file
 
@@ -203,17 +221,11 @@ class App(tkinter.Tk):
         """
         extensions = ("json", "csv", "xml")
 
-        # Fix datafile for App executable
-        if getattr(sys, 'frozen', False):
-            # frozen
-            dir_path = os.path.dirname(sys.executable)
-        else:
-            # unfrozen
-            dir_path = os.path.dirname(os.path.abspath(__file__))
+        # Fix datafile for App executable cx_freeze
+        dir_path = App._check_path_file_frozen()
 
         for ext in extensions:
             filename_ext = os.path.join(dir_path, f"{filename}.{ext}")
-
             if os.path.isfile(filename_ext):
                 os.remove(filename_ext)
 

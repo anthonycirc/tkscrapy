@@ -121,7 +121,7 @@ class App(tkinter.Tk):
         App._clean_files("tkspider")
 
         if self.url_field.get() and self.parent_selector.get():
-            command = "scrapy", "crawl", "tkspider", "-o", f"tkspider.{self.export_var.get()}", "-a", "url=" + self.url_field.get(), "-a", "parent_selector=" + self.parent_selector.get(), "-a", "selectors=" + self.selector_entry.get(
+            command = "scrapy", "runspider", "tkspider.py", "-o", f"tkspider.{self.export_var.get()}", "-a", "url=" + self.url_field.get(), "-a", "parent_selector=" + self.parent_selector.get(), "-a", "selectors=" + self.selector_entry.get(
                 1.0, tkinter.END), "-a", "pagination=" + pagination
 
             subprocess.run(command)  # call subprocess command

@@ -103,4 +103,4 @@ venv.bak/
 .mypy_cache/
 
 # ide
-.idea/
+.idea/*

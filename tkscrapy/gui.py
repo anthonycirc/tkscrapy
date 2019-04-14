@@ -143,7 +143,6 @@ class App(tkinter.Tk):
         file = os.path.join(App._check_path_file_frozen(), f"tkspider.{self.export_var.get()}")
         # check if file exist and if not empty
         if os.path.isfile(file) and os.stat(file).st_size != 0:
-
             try:
                 self.response_entry.delete(1.0, "end")  # reset response output
                 self.response_entry.update()
@@ -207,7 +206,6 @@ class App(tkinter.Tk):
                                         filetypes=(
                                             ("Json file", "*.json"), ("Excel files", "*.csv"), ("Xml file", "*.xml"),
                                             ("All files", "*.*")))
-
         # Copy spider file content in user choices file
         # Fix datafile for App executable cx_freeze
         spider_file = os.path.join(App._check_path_file_frozen(), f"tkspider.{self.export_var.get()}")
@@ -222,7 +220,6 @@ class App(tkinter.Tk):
         :return:
         """
         extensions = ("json", "csv", "xml")
-
         # Fix datafile for App executable cx_freeze
         dir_path = App._check_path_file_frozen()
 

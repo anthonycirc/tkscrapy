@@ -124,7 +124,7 @@ class App(tkinter.Tk):
         App._clean_files("tkspider")
 
         if self.url_field.get() and self.parent_selector.get():
-            command = "scrapy", "runspider", os.path.join(os.path.abspath(os.path.dirname(__file__)),
+            command = "scrapy", "runspider", os.path.join(os.path.abspath(App._check_path_file_frozen()),
                                                           "tkspider.py"), "-o", f"tkspider.{self.export_var.get()}", "-a", "url=" + self.url_field.get(), "-a", "parent_selector=" + self.parent_selector.get(), "-a", "selectors=" + self.selector_entry.get(
                 1.0, tkinter.END), "-a", "pagination=" + pagination
 

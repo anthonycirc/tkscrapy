@@ -15,7 +15,6 @@ from time import sleep
 
 
 class App(tkinter.Tk):
-
     def __init__(self):
         super(App, self).__init__()
 
@@ -77,7 +76,6 @@ class App(tkinter.Tk):
         # //////////////////////////////////// Output frame
         self.output = tkinter.LabelFrame(self, text="Résultat", height=200)
         self.output.pack(ipadx=5, ipady=10)
-
         # widgets
         self.progress = tkinter.DoubleVar()
         self.progress_bar = ttk.Progressbar(self.output, variable=self.progress, length=250)
@@ -86,7 +84,7 @@ class App(tkinter.Tk):
         self.response_entry = ScrolledText(self.output, width="50", height="12", undo=True)
         self.response_entry.pack(expand=tkinter.TRUE, fill="both")
         # btn
-        self.btn_search = tkinter.Button(self.output, text="search", width="25",
+        self.btn_search = tkinter.Button(self.output, text="Recherche", width="25",
                                          command=self.call_spider_process).pack(side="top")
         self.btn_close = tkinter.Button(self.output, text="Fermer", width="25", command=self.quit).pack(side="bottom")
         self.btn_save_actived = True

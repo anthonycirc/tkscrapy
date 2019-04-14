@@ -52,17 +52,20 @@ class App(tkinter.Tk):
         self.pagination_var = tkinter.BooleanVar(value=False)
         self.parent_selector_var = tkinter.StringVar(self.topframe)
         # widgets
-        self.url_label = tkinter.Label(self.topframe, text="Url du site").pack()
+        self.url_label = tkinter.Label(self.topframe, text="Url du site")
+        self.url_label.pack()
         self.url_field = tkinter.Entry(self.topframe, width=50, textvariable=self.url_var)
         self.url_field.pack()
-        self.parent_selector_label = tkinter.Label(self.topframe, text="Le selecteur parent (css)").pack()
+        self.parent_selector_label = tkinter.Label(self.topframe, text="Le selecteur parent (css)")
+        self.parent_selector_label.pack()
         self.parent_selector = tkinter.Entry(self.topframe, width="50", textvariable=self.parent_selector_var)
         self.parent_selector.pack()
         self.selector_label = tkinter.Label(self.topframe,
                                             text="Ajouter nom_colonne | selecteurs  \n "
                                                  "ex: titre | a.product-name::text => Affiche contenu de la balise \n "
                                                  "ex: description | a.product-name => Affiche la balise HTML",
-                                            font="arial 10").pack()
+                                            font="arial 10")
+        self.selector_label.pack()
         self.selector_entry = tkinter.Text(self.topframe, width="50", height="12")
         self.selector_entry.pack()
         self.pagination_checkbox = tkinter.Checkbutton(self.topframe, command=self._display_pagination_entry,

@@ -79,8 +79,12 @@ class App(tkinter.Tk):
         self.output.pack(ipadx=5, ipady=10)
         # widgets
         self.progress = tkinter.DoubleVar()
+        self.progress_counter_var = tkinter.IntVar(value=0)
+        self.progress_total_var = tkinter.IntVar(value=0)
         self.progress_bar = ttk.Progressbar(self.output, variable=self.progress, length=250)
         self.progress_bar.pack(pady=10)
+        self.progress_counter = tkinter.Label(self.output, textvariable=self.progress_counter_var)
+        self.progress_total = tkinter.Label(self.output, textvariable=self.progress_total_var)
         # self.progress_bar.start(10)
         self.response_entry = ScrolledText(self.output, width="50", height="12", undo=True)
         self.response_entry.pack(expand=tkinter.TRUE, fill="both")
@@ -151,23 +155,40 @@ class App(tkinter.Tk):
                 raise
 
             with open(file, "r") as f:
-                for line in f:
+                # Add number of total items
+                self.display_result_total_items(App.count_line_file(file, self.export_var.get()))
+                self.progress_counter_var.set(0)  # reset progress counter value
+                self.progress_counter.place(x=210, y=10)
+
+                for _loop, line in enumerate(f):
+                    # Add counter of loading item
+                    self.display_result_loading_items(_loop_number=_loop, file_ext=self.export_var.get(),
+                                                      total_items=App.count_line_file(file, self.export_var.get()))
                     self.response_entry.insert(tkinter.END, line)  # Get line of file
-                    self.progress_bar.step(100 / App.count_line_file(file))  # Add progress bar
-                    Thread(target=sleep(0.01)).start()
+                    Thread(target=sleep(0.02)).start()
                     self.progress_bar.update()
                 self.progress.set(99.8)  # Set progress bar completed
 
     @staticmethod
-    def count_line_file(file):
+    def count_line_file(file, ext):
         """
         Count line of file
-        :return: float counter
+        :param file: str path of file
+        :param ext: str file extention
+        :return: int counter number of lines
         """
         with open(file, "r"):
             counter = 0
-            while counter < len(file):
-                counter += 1
+            total = len(open(file).readlines())
+            if ext == "json":
+                while counter < (total - 2):  # remove 2 "[]" of json file to counter
+                    counter += 1
+            elif ext == "csv":
+                while counter < (total - 1):  # remove 1 "column name" of CSV file to counter
+                    counter += 1
+            elif ext == "xml":
+                while counter < (total - 3):  # remove 3 "Tags" of XML file to counter
+                    counter += 1
             return counter
 
     def create_save_btn(self):
@@ -239,6 +260,28 @@ class App(tkinter.Tk):
             self.pagination.pack(side="left")
         else:
             self.pagination.pack_forget()
+
+    def display_result_total_items(self, items_nbr):
+        """
+        Displays result counter for progress bar
+        :param items_nbr: int total numbers items
+        :return:
+        """
+        self.progress_total.place(x=350, y=10)
+        self.progress_total_var.set(items_nbr)
+
+    def display_result_loading_items(self, _loop_number=None, file_ext=None, total_items=None):
+        """
+        Display current loading item
+        :param _loop_number:
+        :param _loop: int Current loop number
+        :param ext: str File extention
+        :return: int number of line ajusted for extention
+        """
+        if (file_ext == "json" or file_ext == "csv" or file_ext == "xml") \
+                and 0 < _loop_number <= total_items:
+            self.progress_bar.step(100 / total_items)  # Add progress bar
+            return self.progress_counter_var.set(self.progress_counter_var.get() + 1)
 
 
 if __name__ == "__main__":

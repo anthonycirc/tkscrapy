@@ -8,25 +8,25 @@ You can use the Python version directly or the executable (linux, windows and ma
 ## Installing the python version
 Download the project and go to / tkscrapy and do:
 ```Bash
-- "pip freeze> requirements.txt" #(to install all dependencies)
-- "python gui.py" #(to execute the script)
+pip freeze> requirements.txt #(to install all dependencies)
+python gui.py #(to execute the script)
 ```
 
 ## Linux executable installation
 Download the linux version in / app_desktop_exec / linux
 ```bash
-- "mv linux / opt / Tkscrapy"
-- "touch ~ / .local / share / aplications / Tkscrapy.desktop" # create a shortcut .desktop
+mv linux /opt/Tkscrapy
+touch ~/.local/share/aplications/Tkscrapy.desktop # create a shortcut .desktop
 ```
-Here is an example of .desktop:
+Here is an example of .desktop file:
 ```Bash
 [Desktop Entry]
 Type = Application
 Encoding = UTF-8
 Name = Tkscrapy
 How = Scraper with Tkinter GUI
-Exec = / opt / Tkscrapy / launcher.sh
-Icon = / opt / Tkscrapy / logo.png
+Exec = /opt/Tkscrapy/launcher.sh
+Icon = /opt/Tkscrapy/logo.png
 Terminal = false
 StartupNotify = true
 ```

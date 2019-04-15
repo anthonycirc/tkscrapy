@@ -6,8 +6,9 @@ You can use the Python version directly or the executable (linux, windows and ma
 
 
 ## Installing the python version
-Download the project and go to / tkscrapy and do:
+Download the project and go to /tkscrapy and do:
 ```Bash
+cd /tkscrapy/tkscrapy
 pip freeze> requirements.txt #(to install all dependencies)
 python gui.py #(to execute the script)
 ```

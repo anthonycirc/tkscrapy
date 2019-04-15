@@ -28,8 +28,9 @@ class App(tkinter.Tk):
         # logo
         if "nt" == os.name:
             self.wm_iconbitmap(bitmap="icon.ico")
-        # else:
-        #     self.wm_iconbitmap(bitmap="@icon.xbm")
+        else:
+            icon = tkinter.PhotoImage(file='icon.png')
+            self.tk.call('wm', 'iconphoto', self._w, icon)
 
         # //////////////////////////////////// Format frame
         self.formatframe = tkinter.LabelFrame(self, text="Format d'exportation", height=150, width=400)

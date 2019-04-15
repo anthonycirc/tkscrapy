@@ -2,7 +2,7 @@
 Tkscrapy is a small scraper in Python based on the Scrapy library as well as Tkinter for the graphical user interface (GUI)
 You can use the Python version directly or the executable (linux, windows and macOs) create with cx_freeze
 
-! [Capture.png] (: storage / 3d33718f-6511-40f1-9b57-134106255c27 / 31197660.png)
+![Capture.png] (https://cajoline.github.io/tkscrapy/capture.png)
 
 
 ## Installing the python version

@@ -2,23 +2,24 @@
 Tkscrapy is a small scraper in Python based on the Scrapy library as well as Tkinter for the graphical user interface (GUI)
 You can use the Python version directly or the executable (linux, windows and macOs) create with cx_freeze
 
-![Capture.png] (https://cajoline.github.io/tkscrapy/capture.png)
+![Capture.png](https://cajoline.github.io/tkscrapy/capture.png)
 
 
 ## Installing the python version
 Download the project and go to / tkscrapy and do:
-`` `Bash
-- "pip freeze> requirements.txt" (to install all dependencies)
-- "python gui.py" (to execute the script)
-`` `
+```Bash
+- "pip freeze> requirements.txt" #(to install all dependencies)
+- "python gui.py" #(to execute the script)
+```
 
 ## Linux executable installation
 Download the linux version in / app_desktop_exec / linux
-- made a "mv linux / opt / Tkscrapy"
-- create a shortcut .desktop "touch ~ / .local / share / aplications / Tkscrapy.desktop"
-
+```bash
+- "mv linux / opt / Tkscrapy"
+- "touch ~ / .local / share / aplications / Tkscrapy.desktop" # create a shortcut .desktop
+```
 Here is an example of .desktop:
-`` `Bash
+```Bash
 [Desktop Entry]
 Type = Application
 Encoding = UTF-8
@@ -28,7 +29,7 @@ Exec = / opt / Tkscrapy / launcher.sh
 Icon = / opt / Tkscrapy / logo.png
 Terminal = false
 StartupNotify = true
-`` `
+```
 
 ## Windows executable installation (coming soon)
 

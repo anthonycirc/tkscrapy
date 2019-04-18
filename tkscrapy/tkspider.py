@@ -15,8 +15,8 @@ class TkSpider(scrapy.Spider):
         if self.parent_selector:
             for data in response.css(self.parent_selector):
                 # Call custom generator of selector
-                yield self._selector_generator(data)
-                # self.log('Saved %s' % data)
+                if self._selector_generator(data):
+                    yield self._selector_generator(data)
             if self.pagination != "":
                 next_page = response.css(self.pagination).get()
                 if next_page is not None:

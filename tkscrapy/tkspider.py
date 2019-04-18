@@ -36,7 +36,6 @@ class TkSpider(scrapy.Spider):
             for s_key, s_value in selector_dict.items():
                 if data.css(s_value) and data.css(s_value).get() != " ":
                     selector_dict_content[s_key] = data.css(s_value).get()
-                    print("----", selector_dict_content[s_key])
             return selector_dict_content
 
     @staticmethod

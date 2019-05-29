@@ -5,7 +5,6 @@ import subprocess
 import sys
 import tkinter
 from threading import Thread
-
 from tkinter import filedialog
 from tkinter import messagebox
 from shutil import copyfile
@@ -17,14 +16,12 @@ from time import sleep
 class App(tkinter.Tk):
     def __init__(self):
         super(App, self).__init__()
-
         # init windows
         self.title("Scrap to web")
         self.geometry("450x900")
         self.minsize(200, 400)
         self.resizable(False, True)
         self.config(background="#f2f2f2")
-
         # logo
         if "nt" == os.name:
             self.wm_iconbitmap(bitmap="icon.ico")
@@ -122,7 +119,6 @@ class App(tkinter.Tk):
         """
         # Transform Entry to string or send Entry.get()
         pagination = App._check_if_callable_or_transform_to_string(self.pagination)
-
         # remove all tkspider with extension
         App._clean_files("tkspider")
 

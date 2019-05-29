@@ -14,7 +14,7 @@ python gui.py #(to execute the script)
 ```
 
 ## Linux executable installation
-Download the linux version in / app_desktop_exec / linux
+Download the linux version in / app_desktop_exec / linux / executable
 ```bash
 mv linux /opt/Tkscrapy
 touch ~/.local/share/aplications/Tkscrapy.desktop # create a shortcut .desktop
@@ -31,6 +31,8 @@ Icon = /opt/Tkscrapy/logo.png
 Terminal = false
 StartupNotify = true
 ```
+OR
+Download the .deb package for Ubuntu/Debian in / app_desktop_exec / linux / deb / tkscrapy.deb
 
 ## Windows executable installation (coming soon)
 

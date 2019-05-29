@@ -17,6 +17,7 @@ class TkSpider(scrapy.Spider):
                 # Call custom generator of selector
                 if self._selector_generator(data):
                     yield self._selector_generator(data)
+            # Pagination
             if self.pagination != "":
                 next_page = response.css(self.pagination).get()
                 if next_page is not None:
@@ -33,6 +34,7 @@ class TkSpider(scrapy.Spider):
             selector_dict = TkSpider.parse_entry_to_dict(self.selectors)
             selector_dict_content = dict()
 
+            # Loop for create a Dict with key and value contained in selector_dict.items()
             for s_key, s_value in selector_dict.items():
                 if data.css(s_value) and data.css(s_value).get() != " ":
                     selector_dict_content[s_key] = data.css(s_value).get()

@@ -29,7 +29,7 @@ class App(tkinter.Tk):
         if "nt" == os.name:
             self.wm_iconbitmap(bitmap="icon.ico")
         else:
-            icon = tkinter.PhotoImage(file='icon.png')
+            icon = tkinter.PhotoImage(file=os.path.join(App._check_path_file_frozen(), 'icon.png'))
             self.tk.call('wm', 'iconphoto', self._w, icon)
 
         # //////////////////////////////////// Format frame
@@ -223,7 +223,7 @@ class App(tkinter.Tk):
         Save file and copy the content of tkspider files
         :return:
         """
-        file = filedialog.asksaveasfile(mode="w", initialdir="/home/cajoline/Bureau",
+        file = filedialog.asksaveasfile(mode="w", initialdir="/opt/cajoline/Bureau",
                                         defaultextension=f".{self.export_var.get()}",
                                         filetypes=(
                                             ("Json file", "*.json"), ("Excel files", "*.csv"), ("Xml file", "*.xml"),

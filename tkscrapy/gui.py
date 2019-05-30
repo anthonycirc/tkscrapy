@@ -1,6 +1,7 @@
 # coding:utf-8
 import _tkinter
 import os
+import platform
 import subprocess
 import sys
 import tkinter
@@ -22,9 +23,12 @@ class App(tkinter.Tk):
         self.minsize(200, 400)
         self.resizable(False, True)
         self.config(background="#f2f2f2")
+
         # logo
         if "nt" == os.name:
             self.wm_iconbitmap(bitmap="icon.ico")
+        elif platform.system() == "Darwin":
+            pass
         else:
             icon = tkinter.PhotoImage(file=os.path.join(App._check_path_file_frozen(), 'icon.png'))
             self.tk.call('wm', 'iconphoto', self._w, icon)
@@ -124,10 +128,11 @@ class App(tkinter.Tk):
 
         if self.url_field.get() and self.parent_selector.get():
             command = "scrapy", "runspider", os.path.join(os.path.abspath(App._check_path_file_frozen()),
-                                                          "tkspider.py"), "-o", f"tkspider.{self.export_var.get()}", "-a", "url=" + self.url_field.get(), "-a", "parent_selector=" + self.parent_selector.get(), "-a", "selectors=" + self.selector_entry.get(
+                                                          "tkspider.py"), "-o", os.path.join(os.path.abspath(App._check_path_file_frozen()), f"tkspider.{self.export_var.get()}"), "-a", "url=" + self.url_field.get(), "-a", "parent_selector=" + self.parent_selector.get(), "-a", "selectors=" + self.selector_entry.get(
                 1.0, tkinter.END), "-a", "pagination=" + pagination
 
             subprocess.run(command)  # call subprocess command
+            print(os.path.join(os.path.abspath(App._check_path_file_frozen()),"tkspider.py"))
 
             self.display_result()  # Display result in Text
             self.create_save_btn()  # call create_save_btn method for saving file

@@ -32,11 +32,15 @@ Terminal = false
 StartupNotify = true
 ```
 OR
-Download the .deb package for Ubuntu/Debian in / app_desktop_exec / linux / deb / tkscrapy.deb
+- Download the .deb package for Ubuntu/Debian in / app_desktop_exec / linux / deb / tkscrapy.deb
+
+## Mac executable installation
+- Download the tkscrapy.zip package for MacOs in / app_desktop_exec / macOs / tkscrapy.zip
+- unzip tkscrapy.zip
+- copy tkscrapy directory to you're app folder
+- launch tkscrapy to click in /tkscrapy/tkscrapy file
 
 ## Windows executable installation (coming soon)
-
-## Mac executable installation (coming soon)
 
 # Documentation
 an example of use to scrap a page

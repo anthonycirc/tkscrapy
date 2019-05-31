@@ -67,7 +67,11 @@ class App(tkinter.Tk):
                                                  "ex: description | a.product-name => Affiche la balise HTML",
                                             font="arial 10")
         self.selector_label.pack()
-        self.selector_entry = tkinter.Text(self.topframe, width="50", height="12")
+        # Custom border if system is MacOs
+        if platform.system() == "Darwin":
+            self.selector_entry = tkinter.Text(self.topframe, width="50", height="12", borderwidth=2, relief=tkinter.GROOVE)
+        else:
+            self.selector_entry = tkinter.Text(self.topframe, width="50", height="12")
         self.selector_entry.pack()
         self.pagination_checkbox = tkinter.Checkbutton(self.topframe, command=self._display_pagination_entry,
                                                        onvalue=True, offvalue=False, variable=self.pagination_var)

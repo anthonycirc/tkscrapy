@@ -43,7 +43,7 @@ OR
 ## Windows executable installation (coming soon)
 
 # Documentation
-an example of use to scrap a page
+An example of use to scrap a page 
 - Enter the type of output (JSON, CSV, XML)
 - Reseign a valid url with the protocol (http: //)
 - Add in * Parent selector * the CSS selector you want to search for example if I want to retrieve all links from the site I would do like this: ** a **
@@ -52,6 +52,6 @@ an example of use to scrap a page
 For more information, see the scrapy documentation for selectors [Scrapy documentation] (https://docs.scrapy.org/en/latest/)
 
 You can follow the navigation if you want to visit several pages by checking the box * "pagination selector" *:
-- ex: ** li.next to :: attr ("href") **, you just have to add the navigation link selector
+- Ex: ** li.next to :: attr ("href") **, you just have to add the navigation link selector
 
-see [Scrapy documentation] (https://docs.scrapy.org/en/latest/) for more information
+See [Scrapy documentation] (https://docs.scrapy.org/en/latest/) for more information.
